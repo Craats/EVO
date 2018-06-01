@@ -4,9 +4,9 @@ from modules import entity
 
 
 def main():
-    mister = entity.Entity()
-    pprint(vars(mister))
-    pprint(mister.vitals.vitals)
+    peon = entity.Entity()
+    pprint(vars(peon))
+    pprint(peon.vitals.vitals)
 
 if __name__ == "__main__":
     main()
