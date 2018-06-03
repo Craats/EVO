@@ -29,11 +29,11 @@ TODO / Planning / Roadmap
 =========================
 
 - [x] World generation
-- [] World rendering (DF style for now)
-- [] Finish the initial amount of stats and skills
-- [] Build the passing of time
+- [ ] World rendering (DF style for now)
+- [ ] Finish the initial amount of stats and skills
+- [ ] Build the passing of time
   - How much should a cycle be? 1 time unit per move? 10, 100?
 
-- [] Add basic interactions with the world
+- [ ] Add basic interactions with the world
   - Designate pieces of land as something
   - Mapping walkability in cycles
