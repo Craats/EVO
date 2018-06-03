@@ -1,4 +1,5 @@
 import copy
+import uuid
 
 class WorldMap:
     """
@@ -72,11 +73,12 @@ class WorldMap:
 
 class WorldBlock:
     def __init__(self, type: str = "unset"):
+        self.id = uuid.uuid4()
         self.type = type
         self.resources = {"unset": 0}
 
     def __repr__(self):
-        return self.type
+        return "{}".format(self.type)
 
     def set_type(self, newtype: str = "unset"):
         self.type = newtype
