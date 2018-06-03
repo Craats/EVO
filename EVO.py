@@ -15,7 +15,7 @@ def main():
     print("= World generation test - generate a small sample world, print vars")
     print("=" * 30)
 
-    world_map = world.WorldMap(height = 5, width = 5, depth = 2)
+    world_map = world.WorldMap(height = 3, width = 5, depth = 2)
     pprint(vars(world_map))
 
 if __name__ == "__main__":
