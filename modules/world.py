@@ -1,3 +1,5 @@
+import copy
+
 class WorldMap:
     """
     This class should contain the world, which is a X * Y rectangle
@@ -19,6 +21,7 @@ class WorldMap:
         self.world_composition = {"empty": []}
 
         self.compose_world()
+        self.landscape()
         self.gen_blocks()
 
     def compose_world(self):
@@ -31,6 +34,8 @@ class WorldMap:
             single_line = []
             iter_w = 0
             while iter_w < self.map_w:
+                # 0 is appended here as a placeholder. Do not create blocks here
+                # Every depth-layer will be the same otherwise.
                 single_line.append([0])
                 iter_w = iter_w + 1
             single_layer_array.append(single_line)
@@ -38,20 +43,43 @@ class WorldMap:
 
         depth_layers = {}
         while iter_d < self.map_d:
-            depth_layers[iter_d] = single_layer_array
+            # Deepcopy here because otherwise every layer is the same
+            # referenced list
+            depth_layers[iter_d] = copy.deepcopy(single_layer_array)
             iter_d = iter_d + 1
 
         # Reminder, coordinates are (Y, X) starting at the top left
         self.world_composition = depth_layers
-        self.world_composition[0][1][0] = 1
+
+    def landscape(self):
+        """
+        Make structures in the world
+        """
+        pass
 
     def gen_blocks(self):
         """
         Creates individual world blocks from data in
         the world composition array
         """
-        pass
+        for depth_layer_key, depth_layer_value in self.world_composition.items():
+            for width_line_key, width_line_value in enumerate(depth_layer_value):
+                for height_unit_key, height_unit_value in enumerate(width_line_value):
+                    self.world_composition\
+                    [depth_layer_key]\
+                    [width_line_key]\
+                    [height_unit_key] = WorldBlock(type="grassland")
 
 class WorldBlock:
-    def __init__(self):
-        pass
+    def __init__(self, type: str = "unset"):
+        self.type = type
+        self.resources = {"unset": 0}
+
+    def __repr__(self):
+        return self.type
+
+    def set_type(self, newtype: str = "unset"):
+        self.type = newtype
+
+    def set_resource(self, res_type: str = "unset", res_amount: int = 0):
+        self.resources[res_type] = res_amount
