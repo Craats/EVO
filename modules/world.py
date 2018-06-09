@@ -9,10 +9,11 @@ class WorldMap:
     First we initialize the whole world, to generate landmass groups
     Then we know which settings each block needs.
     """
-    def __init__(self, height: int = 10, width: int = 10, depth: int = 1):
+    def __init__(self, height: int = 10, width: int = 10, depth: int = 1, default_level: int = 1):
         self.map_h = height
         self.map_w = width
         self.map_d = depth
+        self.default_level = default_level
 
         # This a dictionary with an entry for each depth level.
         # In this depth level entry is a list of lists 
